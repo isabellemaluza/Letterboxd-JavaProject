@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sucesso</title>
+    <link rel="stylesheet" th:href="@{css/index.css}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Filme cadastrado!</h1>
+        <p>Seu filme foi registrado com sucesso</p>
+    </header>
+
+    <main class="container">
+        <h2>Tudo certo!</h2>
+
+        <p>
+            O filme foi cadastrado com sucesso no sistema.
+        </p>
+
+        <p>
+            Em breve, ele poderá aparecer na lista de filmes armazenados no banco de dados.
+        </p>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <a th:href="@{/formfilme}">
+                <button>Cadastrar outro filme</button>
+            </a>
+
+            <br><br>
+
+            <a th:href="@{/p1}">
+                <button>Ver catálogo</button>
+            </a>
+
+            <br><br>
+
+            <a class="voltar" th:href="@{/}">
+                Voltar para início
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <p>Projeto acadêmico - Spring Boot</p>
+    </footer>
+
+</body>
+</html>

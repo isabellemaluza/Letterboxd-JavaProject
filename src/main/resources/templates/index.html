@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Letterboxd - Filmes Favoritos</title>
+
+    <link rel="stylesheet" th:href="@{css/index.css}">
+    <script th:src="@{js/index.js}"></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>Letterboxd da Isa</h1>
+        <p>Meu catálogo pessoal de filmes favoritos</p>
+    </header>
+
+    <section class="banner">
+        <h2>Descubra, registre e compartilhe seus filmes</h2>
+        <p>Veja os meus filmes favoritos</p>
+
+        <div class="botoes">
+            <a th:href="@{/p1}">
+                <button>Ver Filmes</button>
+            </a>
+
+            <a th:href="@{/formfilme}">
+                <button>Cadastrar Filme</button>
+            </a>
+
+            <a th:href="@{/p2}">
+                <button>Sobre</button>
+            </a>
+        </div>
+    </section>
+
+    <section class="destaques">
+        <h2>Destaques</h2>
+
+        <div class="cards">
+            <div class="card">
+                <img th:src="@{img/interestelar.jpg}" alt="Filme 1">
+                <h3>Interestelar</h3>
+                <p>Ficção científica, apenas e nada mais</p>
+            </div>
+
+            <div class="card">
+                <img th:src="@{img/coisas.jpg}" alt="Filme 2">
+                <h3>10 coisas que eu odeio em voce</h3>
+                <p>O melhor de todos</p>
+            </div>
+
+            <div class="card">
+                <img th:src="@{img/divertidamente.jpg}" alt="Filme 3">
+                <h3>Divertidamente</h3>
+                <p>Top melhores animacoes</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Projeto acadêmico - Spring Boot + Thymeleaf</p>
+    </footer>
+
+</body>
+</html>

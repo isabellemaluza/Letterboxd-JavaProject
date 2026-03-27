@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Catálogo de Filmes</title>
+
+    <link rel="stylesheet" th:href="@{css/index.css}">
+</head>
+
+<body>
+
+    <header>
+        <h1>🎬 Catálogo de Filmes</h1>
+        <p>Confira alguns dos meus filmes favoritos</p>
+    </header>
+
+    <section class="destaques">
+
+        <div class="cards">
+
+            <div class="card">
+                <img th:src="@{img/interestelar.jpg}" alt="Interestelar">
+                <h3>Interestelar</h3>
+                <p>Uma jornada épica pelo espaço em busca de um novo lar para a humanidade.</p>
+                <p><strong>Gênero:</strong> Ficção científica</p>
+                <p><strong>Nota:</strong>10</p>
+            </div>
+
+            <div class="card">
+                <img th:src="@{img/coisas.jpg}" alt="Batman">
+                <h3>filmw 2</h3>
+                <p>bla bla</p>
+                <p><strong>Gênero:</strong> Ação</p>
+                <p><strong>Nota:</strong>10</p>
+            </div>
+
+            <div class="card">
+                <img th:src="@{img/divertidamente.jpg}" alt="Matrix">
+                <h3>Filme 3</h3>
+                <p>bla bla</p>
+                <p><strong>Gênero:</strong> Ficção científica</p>
+                <p><strong>Nota:</strong>10</p>
+            </div>
+
+            <div class="card">
+                <img th:src="@{img/clubedaluta.jpg}" alt="Clube da Luta">
+                <h3>Clube da Luta</h3>
+                <p>Não posso falar sobre</p>
+                <p><strong>Gênero:</strong>-</p>
+                <p><strong>Nota:</strong>-</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <div style="text-align: center;">
+        <a class="voltar" th:href="@{/}">⬅ Voltar</a>
+    </div>
+
+    <footer>
+        <p>Projeto acadêmico - Spring Boot</p>
+    </footer>
+
+</body>
+</html>

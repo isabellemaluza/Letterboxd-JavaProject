@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: letterboxd
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/letterboxd
+    username: isamaluza
+    password: 351719
+    driver-class-name: org.postgresql.Driver
+
+  sql:
+    init:
+      mode: always
+
+  thymeleaf:
+    cache: false
