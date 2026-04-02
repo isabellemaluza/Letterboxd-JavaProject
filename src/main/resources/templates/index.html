@@ -2,9 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Letterboxd - Filmes Favoritos</title>
-
-    <link rel="stylesheet" th:href="@{css/index.css}">
-    <script th:src="@{js/index.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <script th:src="@{/js/index.js}"></script>
 </head>
 
 <body>
@@ -19,16 +18,16 @@
         <p>Veja os meus filmes favoritos</p>
 
         <div class="botoes">
-            <a th:href="@{/p1}">
-                <button>Ver Filmes</button>
+            <a th:href="@{/listar}">
+                <button type="button">Ver Filmes</button>
             </a>
 
             <a th:href="@{/formfilme}">
-                <button>Cadastrar Filme</button>
+                <button type="button">Cadastrar Filme</button>
             </a>
 
             <a th:href="@{/p2}">
-                <button>Sobre</button>
+                <button type="button">Sobre</button>
             </a>
         </div>
     </section>
@@ -38,21 +37,21 @@
 
         <div class="cards">
             <div class="card">
-                <img th:src="@{img/interestelar.jpg}" alt="Filme 1">
+                <img th:src="@{/img/interestelar.jpg}" alt="Interestelar">
                 <h3>Interestelar</h3>
                 <p>Ficção científica, apenas e nada mais</p>
             </div>
 
             <div class="card">
-                <img th:src="@{img/coisas.jpg}" alt="Filme 2">
-                <h3>10 coisas que eu odeio em voce</h3>
+                <img th:src="@{/img/coisas.jpg}" alt="10 coisas que eu odeio em você">
+                <h3>10 coisas que eu odeio em você</h3>
                 <p>O melhor de todos</p>
             </div>
 
             <div class="card">
-                <img th:src="@{img/divertidamente.jpg}" alt="Filme 3">
+                <img th:src="@{/img/divertidamente.jpg}" alt="Divertidamente">
                 <h3>Divertidamente</h3>
-                <p>Top melhores animacoes</p>
+                <p>Top melhores animações</p>
             </div>
         </div>
     </section>

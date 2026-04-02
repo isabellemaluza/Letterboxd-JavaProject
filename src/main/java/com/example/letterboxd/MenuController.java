@@ -1,5 +1,7 @@
 package com.example.letterboxd;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,12 +22,6 @@ public class MenuController {
         return "index";
     }
 
-    @GetMapping("/p1")
-    public String pagina1(Model model) {
-        model.addAttribute("filmes", filmeService.listarTodos());
-        return "p1";
-    }
-
     @GetMapping("/p2")
     public String pagina2() {
         return "p2";
@@ -40,11 +36,14 @@ public class MenuController {
     @PostMapping("/salvarfilme")
     public String salvarFilme(@ModelAttribute Filme filme) {
         filmeService.salvar(filme);
-        return "sucesso";
+        return "redirect:/listar";
     }
 
-    @GetMapping("/sucesso")
-    public String sucesso() {
-        return "sucesso";
+    @GetMapping("/listar")
+    public String listarFilmes(Model model) {
+        List<Filme> filmes = filmeService.listarTodos();
+        System.out.println("FILMES ENCONTRADOS: " + filmes.size());
+        model.addAttribute("filmes", filmes);
+        return "listarfilme";
     }
 }

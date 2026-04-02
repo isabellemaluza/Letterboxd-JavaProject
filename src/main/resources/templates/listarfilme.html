@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Listar Filmes</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+    <h1>Filmes cadastrados</h1>
+
+    <p th:if="${#lists.isEmpty(filmes)}">Nenhum filme encontrado.</p>
+
+    <table border="1" th:if="${not #lists.isEmpty(filmes)}">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Diretor</th>
+                <th>Gênero</th>
+                <th>Ano</th>
+                <th>Nota</th>
+                <th>Comentário</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="filme : ${filmes}">
+                <td th:text="${filme.id}"></td>
+                <td th:text="${filme.titulo}"></td>
+                <td th:text="${filme.diretor}"></td>
+                <td th:text="${filme.genero}"></td>
+                <td th:text="${filme.ano}"></td>
+                <td th:text="${filme.nota}"></td>
+                <td th:text="${filme.comentario}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <a th:href="@{/}">Voltar</a>
+
+</body>
+</html>
