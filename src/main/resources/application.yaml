@@ -8,6 +8,9 @@ spring:
     password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
 
+  server:
+    port: ${PORT:8080}
+
   sql:
     init:
       mode: always
