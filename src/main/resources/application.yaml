@@ -3,9 +3,9 @@ spring:
     name: letterboxd
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/letterboxd
-    username: isamaluza
-    password: 351719
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
 
   sql:

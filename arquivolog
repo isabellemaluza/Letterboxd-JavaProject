@@ -1,0 +1,2 @@
+2026-04-23 17:21:20.809 -03 [4422] FATAL:  arquivo de bloqueio "postmaster.pid" já existe
+2026-04-23 17:21:20.809 -03 [4422] DICA:  Outro postmaster (PID 4362) está executando sob o diretório de dados "/opt/homebrew/var/postgresql@18"?

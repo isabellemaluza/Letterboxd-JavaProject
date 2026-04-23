@@ -3,40 +3,40 @@
 <head>
     <title>Listar Filmes</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
 </head>
 <body>
 
+<header>
     <h1>Filmes cadastrados</h1>
+</header>
+
+<section class="destaques">
 
     <p th:if="${#lists.isEmpty(filmes)}">Nenhum filme encontrado.</p>
 
-    <table border="1" th:if="${not #lists.isEmpty(filmes)}">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Título</th>
-                <th>Diretor</th>
-                <th>Gênero</th>
-                <th>Ano</th>
-                <th>Nota</th>
-                <th>Comentário</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="filme : ${filmes}">
-                <td th:text="${filme.id}"></td>
-                <td th:text="${filme.titulo}"></td>
-                <td th:text="${filme.diretor}"></td>
-                <td th:text="${filme.genero}"></td>
-                <td th:text="${filme.ano}"></td>
-                <td th:text="${filme.nota}"></td>
-                <td th:text="${filme.comentario}"></td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="cards" th:if="${not #lists.isEmpty(filmes)}">
 
-    <br>
-    <a th:href="@{/}">Voltar</a>
+        <div class="card" th:each="filme : ${filmes}">
+
+            <h3 th:text="${filme.titulo}"></h3>
+
+            <p><strong>ID:</strong> <span th:text="${filme.id}"></span></p>
+            <p><strong>Diretor:</strong> <span th:text="${filme.diretor}"></span></p>
+            <p><strong>Gênero:</strong> <span th:text="${filme.genero}"></span></p>
+            <p><strong>Ano:</strong> <span th:text="${filme.ano}"></span></p>
+            <p><strong>Nota:</strong> ⭐ <span th:text="${filme.nota}"></span></p>
+            <p><strong>Comentário:</strong> <span th:text="${filme.comentario}"></span></p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<div style="text-align: center;">
+    <a th:href="@{/}" class="voltar">Voltar</a>
+</div>
 
 </body>
 </html>

@@ -261,3 +261,34 @@ footer {
         padding: 20px;
     }
 }
+
+.lista-filmes {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.filme-item {
+    background: rgba(255, 255, 255, 0.07);
+    padding: 18px;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+    transition: 0.3s ease;
+}
+
+.filme-item:hover {
+    transform: translateY(-3px);
+}
+
+.filme-titulo {
+    font-size: 1.2rem;
+    color: #22c55e;
+    font-weight: bold;
+}
+
+.filme-info {
+    font-size: 0.95rem;
+    color: #d1d5db;
+    margin-top: 5px;
+}
