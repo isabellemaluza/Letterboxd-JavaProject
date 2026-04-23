@@ -2,18 +2,19 @@ spring:
   application:
     name: letterboxd
 
+  server:
+    port: ${PORT:8080}
+    
   datasource:
     url: ${DB_URL}
     username: ${DB_USER}
     password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
 
-  server:
-    port: ${PORT:8080}
 
   sql:
     init:
-      mode: always
+      mode: never
 
   thymeleaf:
     cache: false
