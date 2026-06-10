@@ -15,18 +15,22 @@
     <section class="formulario">
         <h2 th:text="${filme.id != null} ? 'Editar Cadastro' : 'Formulário de Cadastro'"></h2>
 
+        <div th:if="${erro}" style="color:#ef4444; text-align:center; margin-bottom:15px;">
+            <span th:text="${erro}"></span>
+        </div>
+
         <form th:action="${filme.id != null} ? @{/atualizarfilme} : @{/salvarfilme}"
               th:object="${filme}" method="post">
 
             <input type="hidden" th:field="*{id}">
 
-            <label for="titulo">Título do filme</label>
+            <label for="titulo">Título do filme (*)</label>
             <input type="text" id="titulo" th:field="*{titulo}" placeholder="Digite o título do filme" required>
 
             <label for="diretor">Diretor</label>
-            <input type="text" id="diretor" th:field="*{diretor}" placeholder="Digite o nome do diretor" required>
+            <input type="text" id="diretor" th:field="*{diretor}" placeholder="Digite o nome do diretor">
 
-            <label for="genero">Gênero</label>
+            <label for="genero">Gênero (*)</label>
             <select id="genero" th:field="*{genero}" required>
                 <option value="">Selecione um gênero</option>
                 <option value="Ação">Ação</option>
@@ -40,9 +44,9 @@
             </select>
 
             <label for="ano">Ano de lançamento</label>
-            <input type="number" id="ano" th:field="*{ano}" placeholder="Ex: 2014" required>
+            <input type="number" id="ano" th:field="*{ano}" placeholder="Ex: 2014">
 
-            <label for="nota">Nota</label>
+            <label for="nota">Nota (*)</label>
             <input type="number" id="nota" th:field="*{nota}" min="0" max="10" step="0.1" placeholder="Ex: 9.5" required>
 
             <label for="comentario">Comentário</label>

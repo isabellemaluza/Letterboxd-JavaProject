@@ -38,9 +38,15 @@ public class MenuController {
     }
 
     @PostMapping("/salvarfilme")
-    public String salvarFilme(@ModelAttribute Filme filme) {
-        filmeService.salvar(filme);
-        return "redirect:/listar";
+    public String salvarFilme(@ModelAttribute Filme filme, Model model) {
+        try {
+            filmeService.salvar(filme);
+            return "redirect:/listar";
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("erro", e.getMessage());
+            model.addAttribute("filme", filme);
+            return "formfilme";
+        }
     }
 
     @GetMapping("/listar")
@@ -52,20 +58,21 @@ public class MenuController {
 
     @GetMapping("/editar/{id}")
     public String editarFilme(@PathVariable Integer id, Model model) {
-        try {
-            Filme filme = filmeService.buscarPorId(id);
-            model.addAttribute("filme", filme);
-            return "formfilme";
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw e;
-        }
+        Filme filme = filmeService.buscarPorId(id);
+        model.addAttribute("filme", filme);
+        return "formfilme";
     }
 
     @PostMapping("/atualizarfilme")
-    public String atualizarFilme(@ModelAttribute Filme filme) {
-        filmeService.atualizar(filme);
-        return "redirect:/listar";
+    public String atualizarFilme(@ModelAttribute Filme filme, Model model) {
+        try {
+            filmeService.atualizar(filme);
+            return "redirect:/listar";
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("erro", e.getMessage());
+            model.addAttribute("filme", filme);
+            return "formfilme";
+        }
     }
 
     @GetMapping("/deletar/{id}")

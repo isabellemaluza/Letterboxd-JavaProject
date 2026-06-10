@@ -14,6 +14,7 @@ public class FilmeService {
     }
 
     public void salvar(Filme filme) {
+        validar(filme);
         filmeDAO.salvar(filme);
     }
 
@@ -26,10 +27,23 @@ public class FilmeService {
     }
 
     public void atualizar(Filme filme) {
+        validar(filme);
         filmeDAO.atualizar(filme);
     }
 
     public void deletar(Integer id) {
         filmeDAO.deletar(id);
+    }
+
+    private void validar(Filme filme) {
+        if (filme.getTitulo() == null || filme.getTitulo().isBlank()) {
+            throw new IllegalArgumentException("Título é obrigatório.");
+        }
+        if (filme.getGenero() == null || filme.getGenero().isBlank()) {
+            throw new IllegalArgumentException("Gênero é obrigatório.");
+        }
+        if (filme.getNota() == null) {
+            throw new IllegalArgumentException("Nota é obrigatória.");
+        }
     }
 }

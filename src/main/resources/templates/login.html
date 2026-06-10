@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login - Letterboxd</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+<body>
+
+    <header>
+        <h1>Letterboxd da Isa</h1>
+        <p>Faça login para continuar</p>
+    </header>
+
+    <section class="formulario">
+        <h2>Login</h2>
+
+        <div th:if="${param.error}" style="color:#ef4444; text-align:center; margin-bottom:15px;">
+            Usuário ou senha incorretos.
+        </div>
+
+        <div th:if="${param.logout}" style="color:#22c55e; text-align:center; margin-bottom:15px;">
+            Você saiu com sucesso.
+        </div>
+
+        <form th:action="@{/login}" method="post">
+            <label for="username">Usuário</label>
+            <input type="text" id="username" name="username" placeholder="Digite seu usuário" required>
+
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+
+            <button type="submit">Entrar</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>Projeto acadêmico - Spring Boot + Thymeleaf</p>
+    </footer>
+
+</body>
+</html>
