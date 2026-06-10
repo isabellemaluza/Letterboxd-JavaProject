@@ -1,4 +1,4 @@
-package com.example.letterboxd;
+package com.example.letterboxd.model;
 
 public class Filme {
 

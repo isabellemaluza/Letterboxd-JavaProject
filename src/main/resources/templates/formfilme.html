@@ -8,14 +8,18 @@
 <body>
 
     <header>
-        <h1>Cadastrar Filme</h1>
+        <h1 th:text="${filme.id != null} ? 'Editar Filme' : 'Cadastrar Filme'"></h1>
         <p>Preencha os dados do seu filme favorito</p>
     </header>
 
     <section class="formulario">
-        <h2>Formulário de Cadastro</h2>
+        <h2 th:text="${filme.id != null} ? 'Editar Cadastro' : 'Formulário de Cadastro'"></h2>
 
-        <form th:action="@{/salvarfilme}" th:object="${filme}" method="post">
+        <form th:action="${filme.id != null} ? @{/atualizarfilme} : @{/salvarfilme}"
+              th:object="${filme}" method="post">
+
+            <input type="hidden" th:field="*{id}">
+
             <label for="titulo">Título do filme</label>
             <input type="text" id="titulo" th:field="*{titulo}" placeholder="Digite o título do filme" required>
 
@@ -44,7 +48,7 @@
             <label for="comentario">Comentário</label>
             <textarea id="comentario" th:field="*{comentario}" placeholder="Escreva uma breve opinião sobre o filme"></textarea>
 
-            <button type="submit">Salvar Filme</button>
+            <button type="submit" th:text="${filme.id != null} ? 'Atualizar Filme' : 'Salvar Filme'"></button>
         </form>
 
         <div style="text-align: center;">

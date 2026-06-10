@@ -1,4 +1,4 @@
-package com.example.letterboxd;
+package com.example.letterboxd.model;
 
 import java.util.List;
 
@@ -19,5 +19,17 @@ public class FilmeService {
 
     public List<Filme> listarTodos() {
         return filmeDAO.listarTodos();
+    }
+
+    public Filme buscarPorId(Integer id) {
+        return filmeDAO.buscarPorId(id);
+    }
+
+    public void atualizar(Filme filme) {
+        filmeDAO.atualizar(filme);
+    }
+
+    public void deletar(Integer id) {
+        filmeDAO.deletar(id);
     }
 }

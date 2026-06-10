@@ -21,12 +21,21 @@
 
             <h3 th:text="${filme.titulo}"></h3>
 
-            <p><strong>ID:</strong> <span th:text="${filme.id}"></span></p>
             <p><strong>Diretor:</strong> <span th:text="${filme.diretor}"></span></p>
             <p><strong>Gênero:</strong> <span th:text="${filme.genero}"></span></p>
             <p><strong>Ano:</strong> <span th:text="${filme.ano}"></span></p>
             <p><strong>Nota:</strong> ⭐ <span th:text="${filme.nota}"></span></p>
             <p><strong>Comentário:</strong> <span th:text="${filme.comentario}"></span></p>
+
+            <div style="display: flex; gap: 10px; margin-top: 15px; justify-content: center;">
+                <a th:href="@{/editar/{id}(id=${filme.id})}">
+                    <button type="button">Editar</button>
+                </a>
+                <a th:href="@{/deletar/{id}(id=${filme.id})}"
+                   onclick="return confirm('Tem certeza que deseja deletar este filme?')">
+                    <button type="button" style="background:#ef4444;">Deletar</button>
+                </a>
+            </div>
 
         </div>
 
@@ -34,8 +43,8 @@
 
 </section>
 
-<div style="text-align: center;">
-    <a th:href="@{/}" class="voltar">Voltar</a>
+<div style="text-align: center; margin-top: 20px;">
+    <a th:href="@{/}" class="voltar">⬅ Voltar</a>
 </div>
 
 </body>
