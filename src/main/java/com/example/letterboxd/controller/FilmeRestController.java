@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.letterboxd.model.Filme;
 import com.example.letterboxd.model.FilmeService;
 
-@FilmeRestController
+@RestController
 @RequestMapping("/rest")
 @CrossOrigin(origins = "*")
 public class FilmeRestController {
@@ -36,7 +36,8 @@ public class FilmeRestController {
 
     @PostMapping("/filmes")
     public Filme inserirFilme(@RequestBody Filme filme) {
-        filmeService.salvar(filme);
+        filme.setCadastradoPor("api");
+        filmeService.salvar(filme, null);
         return filme;
     }
 }
