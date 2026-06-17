@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registro - Letterboxd</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+<body>
+
+    <header>
+        <h1>Letterboxd da Isa</h1>
+        <p>Crie sua conta</p>
+    </header>
+
+    <section class="formulario">
+        <h2>Registro</h2>
+
+        <div th:if="${erro}" style="color:#ef4444; text-align:center; margin-bottom:15px;">
+            <span th:text="${erro}"></span>
+        </div>
+
+        <form action="/registro" method="post">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+            <label for="username">Usuário</label>
+            <input type="text" id="username" name="username" placeholder="Escolha um nome de usuário" required>
+
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" placeholder="Escolha uma senha" required>
+
+            <button type="submit">Criar conta</button>
+        </form>
+
+        <div style="text-align: center; margin-top: 15px;">
+            <a th:href="@{/login}">Já tem conta? Faça login</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>Projeto acadêmico - Spring Boot + Thymeleaf</p>
+    </footer>
+
+</body>
+</html>

@@ -2,6 +2,7 @@ package com.example.letterboxd.controller;
 
 import java.util.List;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,9 +39,10 @@ public class MenuController {
     }
 
     @PostMapping("/salvarfilme")
-    public String salvarFilme(@ModelAttribute Filme filme, Model model) {
+    public String salvarFilme(@ModelAttribute Filme filme, Model model, Authentication auth) {
         try {
-            filmeService.salvar(filme);
+            String username = auth.getName();
+            filmeService.salvar(filme, username);
             return "redirect:/listar";
         } catch (IllegalArgumentException e) {
             model.addAttribute("erro", e.getMessage());

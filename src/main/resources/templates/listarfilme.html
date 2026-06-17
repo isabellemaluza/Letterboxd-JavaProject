@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Listar Filmes</title>
     <meta charset="UTF-8">
@@ -9,6 +10,14 @@
 
 <header>
     <h1>Filmes cadastrados</h1>
+    <div style="text-align:center; margin-top:10px;">
+        <a sec:authorize="isAnonymous()" th:href="@{/login}">
+            <button type="button">Login</button>
+        </a>
+        <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post" style="display:inline;">
+            <button type="submit" style="background:#ef4444;">Sair</button>
+        </form>
+    </div>
 </header>
 
 <section class="destaques">
@@ -27,13 +36,19 @@
             <p><strong>Nota:</strong> ⭐ <span th:text="${filme.nota}"></span></p>
             <p><strong>Comentário:</strong> <span th:text="${filme.comentario}"></span></p>
 
-            <div style="display: flex; gap: 10px; margin-top: 15px; justify-content: center;">
+            <p sec:authorize="hasRole('ADMIN')">
+                <strong>Cadastrado por:</strong>
+                <span th:text="${filme.cadastradoPor}"></span>
+            </p>
+
+            <div sec:authorize="hasRole('ADMIN')"
+                 style="display: flex; gap: 10px; margin-top: 15px; justify-content: center;">
                 <a th:href="@{/editar/{id}(id=${filme.id})}">
-                    <button type="button">Editar</button>
+                    <button type="button">✏️ Editar</button>
                 </a>
                 <a th:href="@{/deletar/{id}(id=${filme.id})}"
                    onclick="return confirm('Tem certeza que deseja deletar este filme?')">
-                    <button type="button" style="background:#ef4444;">Deletar</button>
+                    <button type="button" style="background:#ef4444;">🗑️ Deletar</button>
                 </a>
             </div>
 
@@ -44,7 +59,7 @@
 </section>
 
 <div style="text-align: center; margin-top: 20px;">
-    <a th:href="@{/}" class="voltar">⬅ Voltar</a>
+    <a th:href="@{/}" class="voltar" sec:authorize="isAuthenticated()">⬅ Voltar</a>
 </div>
 
 </body>

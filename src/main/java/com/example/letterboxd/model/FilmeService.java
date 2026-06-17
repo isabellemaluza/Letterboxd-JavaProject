@@ -13,8 +13,9 @@ public class FilmeService {
         this.filmeDAO = filmeDAO;
     }
 
-    public void salvar(Filme filme) {
+    public void salvar(Filme filme, String username) {
         validar(filme);
+        filme.setCadastradoPor(username);
         filmeDAO.salvar(filme);
     }
 

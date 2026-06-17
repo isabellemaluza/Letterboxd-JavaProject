@@ -22,6 +22,10 @@
             Você saiu com sucesso.
         </div>
 
+        <div th:if="${param.registrado}" style="color:#22c55e; text-align:center; margin-bottom:15px;">
+            Conta criada com sucesso! Faça login.
+        </div>
+
         <form th:action="@{/login}" method="post">
             <label for="username">Usuário</label>
             <input type="text" id="username" name="username" placeholder="Digite seu usuário" required>
@@ -31,6 +35,10 @@
 
             <button type="submit">Entrar</button>
         </form>
+
+        <div style="text-align: center; margin-top: 15px;">
+            <a th:href="@{/registro}">Não tem conta? Cadastre-se</a>
+        </div>
     </section>
 
     <footer>

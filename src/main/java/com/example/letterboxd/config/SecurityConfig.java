@@ -8,9 +8,17 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.example.letterboxd.model.UsuarioService;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
+    private final UsuarioService usuarioService;
+
+    public SecurityConfig(UsuarioService usuarioService) {
+        this.usuarioService = usuarioService;
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -22,6 +30,10 @@ public class SecurityConfig {
         http
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
+                .requestMatchers("/login", "/registro").permitAll()
+                .requestMatchers("/listar").permitAll()
+                .requestMatchers("/deletar/**", "/editar/**", "/atualizarfilme").hasRole("ADMIN")
+                .requestMatchers("/formfilme", "/salvarfilme").hasAnyRole("ADMIN", "CLIENTE")
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form
@@ -32,7 +44,8 @@ public class SecurityConfig {
             .logout(logout -> logout
                 .logoutSuccessUrl("/login?logout")
                 .permitAll()
-            );
+            )
+            .userDetailsService(usuarioService);
 
         return http.build();
     }

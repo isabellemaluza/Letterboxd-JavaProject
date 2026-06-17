@@ -24,14 +24,15 @@ public class FilmeDAOImpl implements FilmeDAO {
         f.setAno(rs.getInt("ano"));
         f.setNota(rs.getDouble("nota"));
         f.setComentario(rs.getString("comentario"));
+        f.setCadastradoPor(rs.getString("cadastrado_por"));
         return f;
     };
 
     @Override
     public void salvar(Filme filme) {
         String sql = """
-            INSERT INTO filme (titulo, diretor, genero, ano, nota, comentario)
-            VALUES (?, ?, ?, ?, ?, ?)
+            INSERT INTO filme (titulo, diretor, genero, ano, nota, comentario, cadastrado_por)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
         """;
         jdbcTemplate.update(sql,
             filme.getTitulo(),
@@ -39,7 +40,8 @@ public class FilmeDAOImpl implements FilmeDAO {
             filme.getGenero(),
             filme.getAno(),
             filme.getNota(),
-            filme.getComentario()
+            filme.getComentario(),
+            filme.getCadastradoPor()
         );
     }
 
