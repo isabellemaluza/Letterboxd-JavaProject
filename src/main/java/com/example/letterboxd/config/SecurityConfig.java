@@ -28,14 +28,15 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
-                .requestMatchers("/login", "/registro").permitAll()
-                .requestMatchers("/listar").permitAll()
-                .requestMatchers("/deletar/**", "/editar/**", "/atualizarfilme").hasRole("ADMIN")
-                .requestMatchers("/formfilme", "/salvarfilme").hasAnyRole("ADMIN", "CLIENTE")
-                .anyRequest().authenticated()
-            )
+           .authorizeHttpRequests(auth -> auth
+            .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
+            .requestMatchers("/login", "/registro").permitAll()
+            .requestMatchers("/listar").permitAll()
+            .requestMatchers("/rest/**").permitAll()
+            .requestMatchers("/deletar/**", "/editar/**", "/atualizarfilme").hasRole("ADMIN")
+            .requestMatchers("/formfilme", "/salvarfilme").hasAnyRole("ADMIN", "CLIENTE")
+            .anyRequest().authenticated()
+        )
             .formLogin(form -> form
                 .loginPage("/login")
                 .defaultSuccessUrl("/", true)
